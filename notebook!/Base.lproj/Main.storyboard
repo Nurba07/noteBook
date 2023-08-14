@@ -61,7 +61,40 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7a-MP-E9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="103" y="4"/>
+        </scene>
+        <!--Archive View Controller-->
+        <scene sceneID="Sq6-Bf-9Ct">
+            <objects>
+                <viewController storyboardIdentifier="archive" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UZh-Yx-ssk" customClass="ArchiveViewController" customModule="notebook_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lFR-VG-Rvx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bID-UG-6Ig">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pwn-cm-7bY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bID-UG-6Ig" firstAttribute="bottom" secondItem="Pwn-cm-7bY" secondAttribute="bottom" id="E5h-fa-1xA"/>
+                            <constraint firstItem="bID-UG-6Ig" firstAttribute="trailing" secondItem="Pwn-cm-7bY" secondAttribute="trailing" id="M27-NI-JaM"/>
+                            <constraint firstItem="bID-UG-6Ig" firstAttribute="top" secondItem="Pwn-cm-7bY" secondAttribute="top" id="fHk-f1-KOo"/>
+                            <constraint firstItem="bID-UG-6Ig" firstAttribute="leading" secondItem="Pwn-cm-7bY" secondAttribute="leading" id="syr-6n-PX0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ovM-P2-SUL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nyd-Hq-47M"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="bID-UG-6Ig" id="MmT-g3-stW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2h-MX-wP9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018" y="4"/>
         </scene>
     </scenes>
     <resources>

@@ -20,12 +20,27 @@ class CoreDataManager{
     }()
     
     var tasks: [List]? = nil
+    var done: [Done]? = nil
     
-    func save(title: String?, body: String?) {
+    func save(title: String?, body: String?, date: String) {
         let context = persistentContainer.viewContext
         let lists = List(context: context)
         lists.body = body
         lists.title = title
+        lists.date = date
+        
+        do {
+          try context.save()
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    func addDone(list: List) {
+        let context = persistentContainer.viewContext
+        let dones = Done(context: context)
+        dones.body = list.body
+        dones.title = list.title
+        dones.date = list.date
         
         do {
           try context.save()
@@ -36,9 +51,8 @@ class CoreDataManager{
     
     func delete(list: List) {
         let managedContext = persistentContainer.viewContext
-        
+        addDone(list: list)
         managedContext.delete(list)
-        
         do {
           try managedContext.save()
         } catch let error as NSError {
@@ -57,6 +71,19 @@ class CoreDataManager{
             print("Error with fetching")
         }
         return tasks
+    }
+    
+    func getAllDone() -> [Done]? {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Done> = Done.fetchRequest()
+        do{
+            let objects = try context.fetch(fetchRequest)
+            done = objects
+            return done
+        }catch{
+            print("Error with fetching")
+        }
+        return done
     }
     
     func saveContext () {

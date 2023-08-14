@@ -31,8 +31,11 @@ class ListViewCell: UITableViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        guard let body = task?.body else { return }
+        guard let date = task?.date else { return }
+
         self.titleLabel.text = task?.title
-        self.bodyLabel.text = task?.body
+        self.bodyLabel.text = "\(body) \n\(date)"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
