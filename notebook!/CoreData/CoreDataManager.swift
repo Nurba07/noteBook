@@ -59,6 +59,15 @@ class CoreDataManager{
           print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    func absoluteDelete(done: Done) {
+        let managedContext = persistentContainer.viewContext
+        managedContext.delete(done)
+        do {
+          try managedContext.save()
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     func getAllTasks() -> [List]? {
         let context = persistentContainer.viewContext

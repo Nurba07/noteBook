@@ -10,6 +10,9 @@ import UIKit
 protocol ViewControllerDelegate{
     func deleteButtonPressed(list: List)
 }
+protocol ArchiveViewControllerDelegate{
+    func deleteButtonPressed(done: Done)
+}
 
 class ListViewCell: UITableViewCell {
 
@@ -20,8 +23,10 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var bodyLabel: UILabel!
     
     var task: List?
-    
+    var done: Done?
+
     var delegate: ViewControllerDelegate?
+    var archiveDelegate: ArchiveViewControllerDelegate?
     
     @IBOutlet weak var doneButton: UIButton!
     
@@ -45,7 +50,10 @@ class ListViewCell: UITableViewCell {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        guard let task = task else { return }
-        self.delegate?.deleteButtonPressed(list: task)
+        if let task = task {
+            self.delegate?.deleteButtonPressed(list: task)
+        }else if let done = done{
+            self.archiveDelegate?.deleteButtonPressed(done: done)
+        }
     }
 }

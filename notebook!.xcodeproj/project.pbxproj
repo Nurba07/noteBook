@@ -86,7 +86,6 @@
 				4B7E0CC92A84C08100519FC0 /* Assets.xcassets */,
 				4B7E0CCB2A84C08100519FC0 /* LaunchScreen.storyboard */,
 				4B7E0CCE2A84C08100519FC0 /* Info.plist */,
-				4B7E0CC62A84C08000519FC0 /* notebook_.xcdatamodeld */,
 			);
 			path = "notebook!";
 			sourceTree = "<group>";
@@ -116,6 +115,7 @@
 				4B7E0CE02A863D7000519FC0 /* List+CoreDataClass.swift */,
 				4B7E0CE12A863D7000519FC0 /* List+CoreDataProperties.swift */,
 				4B7E0CDD2A84CB0000519FC0 /* CoreDataManager.swift */,
+				4B7E0CC62A84C08000519FC0 /* notebook_.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArchiveViewController: UIViewController {
+class ArchiveViewController: UIViewController, ArchiveViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +35,10 @@ class ArchiveViewController: UIViewController {
         }
         self.tableView.reloadData()
     }
+    func deleteButtonPressed(done: Done) {
+        coreDataManager.absoluteDelete(done: done)
+        updateData()
+    }
     
 }
 
@@ -45,12 +49,14 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier) as! ListViewCell
+        cell.done = done[indexPath.row]
         cell.titleLabel.text = done[indexPath.row].title
         cell.bodyLabel.text = done[indexPath.row].body
         cell.doneButton.setTitle("Delete", for: .normal)
         cell.doneButton.tintColor = .black
         cell.doneButton.backgroundColor = .red
         cell.doneButton.layer.cornerRadius = 5
+        cell.archiveDelegate = self
         return cell
     }
     
